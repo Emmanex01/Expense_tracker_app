@@ -1,9 +1,10 @@
 import React from 'react';
+import HomeScreen from './pages/HomeScreen';
 
 function App() {
   return (
-    <div className='text-3xl font-bold underline'>
-      Hello World !
+    <div className=''>
+      <HomeScreen/>
     </div>
   )
 }
