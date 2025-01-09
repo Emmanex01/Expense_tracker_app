@@ -1,6 +1,9 @@
 import React from 'react';
 import { FaBell } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
+import Button from '../components/ui/Button';
+import NavBar from '../components/ui/NavBar';
+
 
 
 export default function HomeScreen() {
@@ -57,19 +60,49 @@ export default function HomeScreen() {
         <div className='p-2 bg-yellow-200 rounded-full'>See All</div>
       </div>
 
-      <div className='flex gap-3'>
+      <div className='flex gap-4 my-2'>
         <img src="/shopping.png" alt="" />
-        <div className='w-2/3 gap-2'>
-            <div className='flex justify-between'>
-                <h1>Shopping</h1>
+        <div className=' w-full gap-2 py-1'>
+            <div className='flex justify-between min-w-full'>
+                <h1 className=''>Shopping</h1>
                 <h1>-$120</h1>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between py-1'>
                 <h4>Buy some grocery</h4>
                 <h4>10:00 AM</h4>
             </div>
         </div>
       </div>
+
+      <div className='flex gap-4 mb-2'>
+        <img src="/food.png" alt="" />
+        <div className=' w-full gap-2 py-1'>
+            <div className='flex justify-between min-w-full'>
+                <h1 className=''>Shopping</h1>
+                <h1>-$120</h1>
+            </div>
+            <div className='flex justify-between py-1'>
+                <h4>Buy some grocery</h4>
+                <h4>10:00 AM</h4>
+            </div>
+        </div>
+      </div>
+
+      <div className='flex gap-4 mb-2'>
+        <img src="/subscription.png" alt="" />
+        <div className=' w-full gap-2 py-1'>
+            <div className='flex justify-between min-w-full'>
+                <h1 className=''>Shopping</h1>
+                <h1>-$120</h1>
+            </div>
+            <div className='flex justify-between py-1'>
+                <h4>Buy some grocery</h4>
+                <h4>10:00 AM</h4>
+            </div>
+        </div>
+      </div>
+      
+      <NavBar/>
     </div>
   )
 }
