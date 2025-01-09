@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { IoMdAttach } from "react-icons/io";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import AddFileModal from "../components/ui/AddFileModal";
 
 
 const ExpenseScreen = () => {
@@ -10,14 +11,20 @@ const ExpenseScreen = () => {
         selectedWallet:"wallet"
     })
 
+    const [openModal, setOpenModal] = useState(false);
+
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault()
 
         console.log(formData)
     };
 
+    const handleModalChange = () => {
+        setOpenModal(true)
+    }
+
     return (
-        <div className="bg-green-300">
+        <div className="bg-green-300 relative">
             <form 
                 action=""
                 onSubmit={handleSubmit}
@@ -71,10 +78,14 @@ const ExpenseScreen = () => {
                         <option value="palmpay">Palmpay</option>
                         <option value="paypal">Paypal</option>
                     </select>
-                    <div className="flex items-center justify-center py-2 gap-2 border-gray-200 border-2 rounded-2xl mb-2">
+                    <div 
+                        className="flex items-center justify-center py-2 gap-2 border-gray-200 border-2 rounded-2xl mb-2"
+                        onClick={handleModalChange}
+                    >
                         <IoMdAttach/>
                         <p>Add Attachment</p>
                     </div>
+                    <img src="/subscription.png" alt="" />
                     <div className="flex justify-between items-center">
                         <div>
                             <p className="font-medium">Repeat</p>
@@ -93,7 +104,9 @@ const ExpenseScreen = () => {
                     </button>
                 </div>
             </form>
-            
+            {
+                openModal ? <AddFileModal/> : <div></div>
+            }
         </div>
     )
 }
