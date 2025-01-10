@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { IoMdAttach } from "react-icons/io";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import AddFileModal from "../components/ui/AddFileModal";
+import AddFileModal from "../components/ui/AddFileModal"
 
 
 const ExpenseScreen = () => {
@@ -9,8 +9,8 @@ const ExpenseScreen = () => {
         selectedCategory: "category",
         inputData: "",
         selectedWallet:"wallet"
-    })
-
+    });
+    const [selectedFile, setSelectedFile] = useState<string>()
     const [openModal, setOpenModal] = useState(false);
 
     const handleSubmit = (event: FormEvent) => {
@@ -19,8 +19,19 @@ const ExpenseScreen = () => {
         console.log(formData)
     };
 
+    console.log(selectedFile)
+
+    const handleSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+        if (e.target.files) {
+            const data = e.target.files[0];
+            setSelectedFile(URL.createObjectURL(data));
+            handleModalChange()
+        }
+    }
+
     const handleModalChange = () => {
-        setOpenModal(true)
+        setOpenModal(!openModal)
     }
 
     return (
@@ -85,7 +96,11 @@ const ExpenseScreen = () => {
                         <IoMdAttach/>
                         <p>Add Attachment</p>
                     </div>
-                    <img src="/subscription.png" alt="" />
+                    <img 
+                        src={selectedFile} 
+                        alt="" 
+                        className="w-24"
+                    />
                     <div className="flex justify-between items-center">
                         <div>
                             <p className="font-medium">Repeat</p>
@@ -105,8 +120,9 @@ const ExpenseScreen = () => {
                 </div>
             </form>
             {
-                openModal ? <AddFileModal/> : <div></div>
+                openModal ?<AddFileModal updateChangeModal={handleModalChange} updateSelectedFile={handleSelectFile}/> : <div></div>
             }
+            
         </div>
     )
 }
