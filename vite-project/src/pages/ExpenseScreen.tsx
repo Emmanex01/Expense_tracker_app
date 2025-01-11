@@ -34,6 +34,10 @@ const ExpenseScreen = () => {
         setOpenModal(!openModal)
     }
 
+    const handlesImageRemoval = () => {
+        setSelectedFile(undefined);
+    }
+
     return (
         <div className="bg-green-300 relative">
             <form 
@@ -96,11 +100,24 @@ const ExpenseScreen = () => {
                         <IoMdAttach/>
                         <p>Add Attachment</p>
                     </div>
-                    <img 
-                        src={selectedFile} 
-                        alt="" 
-                        className="w-24"
-                    />
+                    <div className="w-24 relative">
+                        {
+                            selectedFile && 
+                            <p 
+                                className="absolute right-0 top-0 bg-slate-400 w-4 text-center rounded-2xl"
+                                onClick={handlesImageRemoval}
+                            >
+                                X
+                            </p>
+                        }
+                        
+                        <img 
+                            src={selectedFile} 
+                            alt="" 
+                            className="w-full"
+                        />
+                    </div>
+                    
                     <div className="flex justify-between items-center">
                         <div>
                             <p className="font-medium">Repeat</p>
