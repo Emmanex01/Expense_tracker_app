@@ -7,7 +7,7 @@ import { FaRegUser } from "react-icons/fa";
 
 const NavBar = () => {
     return (
-        <div className="grid grid-cols-5 text-sm sticky bottom-0 bg-white py-2 md:bg-slate-600 md:sticky md:top-0 md:self-start md:h-lvh md:flex md:flex-col md:w-48 md:items-start md:gap-7" >
+        <div className="grid grid-cols-5 text-sm fixed bottom-0 right-0 left-0 bg-white py-2 md:bg-slate-600 md:sticky md:top-0 md:self-start md:h-lvh md:flex md:flex-col md:w-60 md:items-start md:gap-7" >
             <div className="flex flex-col justify-center items-center md:flex-row ">
                 <FaHome className="h-8 w-12 text-green-500"/>
                 <h2>Home</h2>

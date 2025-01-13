@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaBell } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import Button from '../components/ui/Button';
@@ -7,13 +7,15 @@ import NavBar from '../components/ui/NavBar';
 
 
 export default function HomeScreen() {
+  const [transactionDays, setTransactionDays] = useState("today");
+
   return (
-    <div className='md:grid md:grid-cols-[auto_1fr]'>
+    <div className='md:grid md:grid-cols-[auto_1fr] pr-4'>
       <NavBar/>
       
       <div >
-        <div className='md:grid md:grid-cols-2 bg-slate-500 gap-4'>
-          <div className='w-full md:border-2 md:border-rose-600 bg-gray-50'>
+        <div className='md:grid md:grid-cols-2 gap-4'>
+          <div className='w-full md:border-2 bg-gray-50'>
             <header className='flex justify-between items-center'>
               <img className='w-14 h-14 cover rounded-full' src="/user1.jpg" alt="Image" />
               <div className='flex items-center gap-2 rounded-full bg-red-200 py-2 px-3'>
@@ -50,7 +52,7 @@ export default function HomeScreen() {
 
           </div>
           
-          <div className=' md:border-2 md:border-rose-600'>
+          <div className=''>
             <h1 className='font-bold'>Spend Frequency</h1>
             <img src="/Graph.png" alt="" className='w-full' />
           </div>
@@ -59,10 +61,10 @@ export default function HomeScreen() {
 
         <div>
           <div className='grid grid-cols-4 my-4'>
-            <div className='py-2 px-4 rounded-full bg-yellow-200'>Today</div>
-            <div className='py-2 px-4 rounded-full '>Week</div>
-            <div className='py-2 px-4 rounded-full '>Month</div>
-            <div className='py-2 px-4 rounded-full '>Year</div>
+            <div className={`py-2 px-4 rounded-full ${ transactionDays == "today" ? "bg-red-600" : "bg-white" }`} onClick={() => setTransactionDays('today')}>Today</div>
+            <div className={`py-2 px-4 rounded-full ${ transactionDays == "week" ? "bg-red-600" : "bg-white" }`} onClick={() => setTransactionDays('week')}>Week</div>
+            <div className={`py-2 px-4 rounded-full ${ transactionDays == "month" ? "bg-red-600" : "bg-white" }`} onClick={() => setTransactionDays('month')}>Month</div>
+            <div className={`py-2 px-4 rounded-full ${ transactionDays == "year" ? "bg-red-600" : "bg-white" }`} onClick={() => setTransactionDays('year')}>Year</div>
           </div>
 
           <div className='flex justify-between items-center'>
